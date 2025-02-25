@@ -1,4 +1,7 @@
 @extends('admin.master')
+@section('title')
+  Huy Store | Add
+@endsection
 @section('content')
 <div class="app-content">
           <!--begin::Container-->
@@ -12,28 +15,49 @@
                 <div class="card-header"><div class="card-title">Quick Example</div></div>
                 <!--end::Header-->
                 <!--begin::Form-->
-                <form>
+                <form method="post" action="{{route('product.store')}}">
+                  @csrf
                   <!--begin::Body-->
                   <div class="card-body">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <label for="exampleInputEmail1" class="form-label">Tên </label>
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
-                        id="exampleInputEmail1"
+                        id="name"
+                        name="name"
                         aria-describedby="emailHelp"
                       />
-                      <div id="emailHelp" class="form-text">
-                        We'll never share your email with anyone else.
-                      </div>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" />
+                      <label for="exampleInputEmail1" class="form-label">Tuổi </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="age"
+                        name="age"
+                        aria-describedby="emailHelp"
+                      />
                     </div>
-                    <div class="input-group mb-3">
-                      <input type="file" class="form-control" id="inputGroupFile02" />
-                      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Địa chỉ </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="address"
+                        name="address"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Trạng thái </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="status"
+                        name="status"
+                        aria-describedby="emailHelp"
+                      />
                     </div>
                     <div class="mb-3 form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1" />

@@ -6,9 +6,6 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('admin.products.list');
-});
 Route::get('/uri', function () {
     return "Hello world";
 });
@@ -18,24 +15,6 @@ Route::get('/uri', function () {
 Route::get('/uri', function () {
     return view();
 });
-
-// tra thang ve
-
-Route::view('/huy', 'huy');
-
-
-// truyen tham so
-
-Route::get('/uri/{id}', function ($id) {
-    return 'Huy so:' . $id;
-});
-
-
-
-Route::get('/user{id}/commet{c_id}', function ($id, $c_id) {
-    return 'huy so' . $id . '<br>comment' . $c_id . '<hr>'; });
-Route::get('/user/{id?}/commet/{c_id?}', function ($id = "huy", $c_id = "huy") {
-    return 'huy so' . $id . '<br>comment' . $c_id . '<hr>'; });
 
 Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');

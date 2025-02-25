@@ -3,7 +3,9 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/AdminLTELogo.png')}}">
+
+    <title>@yield('title','AdminLTE v4 | Dashboard')</title>
     <!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="AdminLTE v4 | Dashboard" />
@@ -240,7 +242,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="modules/categories/add.html" class="nav-link">
+                    <a href="{{route('product.create') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Thêm mới</p>
                     </a>

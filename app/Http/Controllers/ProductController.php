@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -14,30 +17,45 @@ class ProductController extends Controller
      */
     function index()
     {
-        return view('admin.products.list');
-    }
-    function detail()
-    {
-        return "Product detail: ";
+        $accounts = DB::table("accounts")->get();
+        $data = [
+            'accounts' => $accounts];
+        return view('admin.products.list', $data);
     }
     function create()
     {
         return view('admin.products.add');
+
     }
-    function store($id)
+    function store(Request $request)
     {
-        return "Save product create".$id;
+        $accounts = new Account();
+        $accounts->name = $request->name;
+        $accounts->age = $request->age;
+        $accounts->address = $request->address;
+        $accounts->status = $request->status;
+        $accounts->create();
+        return Redirect::route('product.index');
+
     }
-    function edit($id)
-    {
-        return "Form edit product: ".$id;
+    function edit($id){
+        $account = DB::table('accounts')->find($id);
+        $data = ['account' => $account];
+        return view('admin.products.edit', $data);
     }
-    function update($id)
-    {
-        return "Update success".$id;
+    function update(Request $request, $id){
+        DB::table('accounts')->where('id', $id)
+        ->update([
+            'name' => $request -> name,
+            'age' => $request -> age,
+            'address' => $request ->address,
+            'status' => $request -> status
+        ]);
+        return Redirect::route('product.index');
     }
     function delete($id)
     {
-        return "Delete success".$id;
+        DB::table('accounts')->where('id',$id)->delete();
+        return Redirect::route('product.index');
     }
 }
